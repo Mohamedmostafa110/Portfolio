@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Design tokens — Midnight Navy + Warm Gold. Light and dark are both
+   intentionally designed; update the palette here only.
+--------------------------------------------------------------------------- */
+:root {
+  --color-base: #f7f5f0;
+  --color-raised: #ffffff;
+  --color-overlay: rgba(16, 24, 46, 0.045);
+  --color-line: #e5e0d4;
+  --color-fg: #10182e;
+  --color-fg-muted: #5b6580;
+  --color-accent: #8f7b52;
+  --color-accent-deep: #6f5f3c;
+  color-scheme: light;
+}
+
+.dark {
+  --color-base: #0b132b;
+  --color-raised: #0e1730;
+  --color-overlay: rgba(233, 236, 244, 0.05);
+  --color-line: rgba(233, 236, 244, 0.12);
+  --color-fg: #e9ecf4;
+  --color-fg-muted: #8b96b8;
+  --color-accent: #d6c6a8;
+  --color-accent-deep: #b8a67f;
+  color-scheme: dark;
+}
+
+/* Applied only while the theme animates (see useTheme) so first paint never flashes */
+.theme-anim,
+.theme-anim * {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    fill 0.3s ease,
+    stroke 0.3s ease !important;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-base text-fg font-sans;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #0b132b;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 999px;
+    border: 2px solid var(--color-base);
+  }
+}
+
+@layer utilities {
+  /* Subtle blueprint grid used behind the hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 75%);
+  }
+
+  .glow-accent {
+    background: radial-gradient(
+      ellipse 55% 45% at 50% 0%,
+      color-mix(in srgb, var(--color-accent) 16%, transparent),
+      transparent 70%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
