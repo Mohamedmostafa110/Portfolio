@@ -3,6 +3,7 @@
 وهم جوا الcontainer ده
 // الصورة الشخصية
 // live demo , link githup
+//اليمل والكونتكت
 وكمان زرار الback to portfolio
 خليه لما ننزل شوية كدا بالسكرول يبقي معانا كدا مش لازم اليوزر يعمل سكرول فوق تاني عشان يطلع
 
@@ -23,7 +24,7 @@ src/data/portfolio.ts
 
 ```text
 public/images/projects/
-public/images/certificates/
+public/certificates/
 ```
 
 بعد أي تعديل شغّل:
@@ -40,22 +41,11 @@ npm run build
 
 افتح الملف:
 
-    image: "/images/certificates/react-iti.png",
-    url: "https://example.com/verify",
-    description: "برنامج تدريبي ركز على بناء تطبيقات React حديثة.",
-    achievements: [
-      "Built reusable React components.",
-      "Created responsive application flows.",
-    ],
-    skills: ["React", "JavaScript", "Component Design"],
-
-````
-
 ابحث عن:
 
 ```ts
 export const projects: Project[] = [
-````
+```
 
 أضف كائن المشروع داخل المصفوفة، ويفضل وضعه بعد المشروع الذي تريد أن يسبقه مباشرة.
 
@@ -179,105 +169,22 @@ featured: true,
 
 ---
 
-## 3. إضافة شهادة أو إنجاز
+## 3. إضافة شهادة
 
-ابحث عن:
-
-```ts
-export const certificates: Certificate[] = [];
-```
-
-أضف الشهادة داخل المصفوفة بهذا الشكل:
-
-```ts
-export const certificates: Certificate[] = [
-  {
-    title: "React Development",
-    issuer: "ITI",
-    year: "2026",
-    image: "/images/certificates/react-development.png",
-    kind: "Certification",
-    description: "برنامج تدريبي ركز على بناء تطبيقات React حديثة.",
-    experience: "خلاصة تجربتي أثناء البرنامج وما الذي عملت عليه.",
-    achievements: ["Built reusable React components.", "Created responsive application flows."],
-    learnings: ["How to structure React applications.", "How to build responsive user flows."],
-    skills: ["React", "JavaScript", "Component Design"],
-  },
-];
-```
-
-### الحقول
-
-| الحقل          | النوع      | مطلوب؟ | الشرح                                           |
-| -------------- | ---------- | ------ | ----------------------------------------------- |
-| `title`        | `string`   | نعم    | اسم الشهادة أو الإنجاز                          |
-| `issuer`       | `string`   | نعم    | الجهة المانحة                                   |
-| `year`         | `string`   | نعم    | السنة مثل `2026`                                |
-| `image`        | `string`   | لا     | مسار صورة الشهادة                               |
-| `kind`         | `string`   | لا     | `Certification` أو `Achievement` أو `Milestone` |
-| `description`  | `string`   | لا     | نبذة عن الشهادة أو البرنامج                     |
-| `experience`   | `string`   | لا     | خلاصة تجربتك أثناء الحدث أو البرنامج            |
-| `achievements` | `string[]` | لا     | ما الذي نفذته أو حققته خلال الشهادة             |
-| `learnings`    | `string[]` | لا     | أهم الأشياء التي تعلمتها                        |
-| `skills`       | `string[]` | لا     | المهارات والتقنيات التي تعلمتها                 |
-
-ضع صورة الشهادة في:
-
-```text
-public/images/certificates/react-development.png
-```
-
-واستخدمها في البيانات:
-
-```ts
-image: "/images/certificates/react-development.png",
-```
-
-إذا لم تضف صورة، سيظهر placeholder تلقائيًا بدل صورة مزيفة.
-
-### ترتيب وعدد الشهادات
-
-- يتم عرض أول 6 شهادات على الشاشات الكبيرة.
-- يتم عرض أول 4 شهادات على الشاشات الصغيرة.
-- إذا كان عدد الشهادات أكبر من الحد المناسب للشاشة يظهر زر `View all certificates`.
-- عند الضغط عليه تظهر كل الشهادات.
-- يظهر زر `Back to portfolio` للرجوع.
-- ترتيب الشهادات يعتمد على ترتيبها داخل مصفوفة `certificates`.
-
-### تفاصيل الشهادة
-
-بالضغط على أي شهادة تفتح نافذة تفاصيل. املأ الحقول الاختيارية داخل نفس object:
+ضع ملف PDF الحقيقي في `public/certificates/`، ثم أضف object إلى مصفوفة `certificates` في `src/data/portfolio.ts`:
 
 ```ts
 {
-  title: "React Development",
-  issuer: "ITI",
-  year: "2026",
-  image: "/images/certificates/react-development.png",
-  kind: "Certification",
-  description: "نبذة عن البرنامج أو الشهادة.",
-  experience: "خلاصة تجربتي أثناء البرنامج.",
-  achievements: [
-    "ما الذي نفذته خلال البرنامج؟",
-    "ما النتيجة أو المشروع الذي أنجزته؟",
-  ],
-  learnings: [
-    "ما أهم شيء تعلمته؟",
-    "كيف أثرت التجربة على طريقة عملي؟",
-  ],
-  skills: ["React", "JavaScript", "Teamwork"],
+  id: "iti-react-training",
+  title: "React Training Certificate",
+  issuer: "Information Technology Institute (ITI)",
+  description: "Documents React training through ITI.",
+  category: "Frontend Development",
+  pdfUrl: "/certificates/iti-react-training-certificate.pdf",
 }
 ```
 
-تظهر داخل النافذة: الصورة، الجهة والسنة، نوع العنصر، النبذة، تجربتك، الإنجازات، ما تعلمته، والمهارات.
-
-إذا كانت المصفوفة فارغة:
-
-```ts
-export const certificates: Certificate[] = [];
-```
-
-سيظهر مكان توضيحي يخبرك أن الشهادات لم تتم إضافتها بعد.
+يتضمن كل object الحقول `id`, `title`, `issuer`, `description`, `category`, و`pdfUrl`. اختياريًا، استخدم `featured: true` لتمييز دبلومة التخرج. يفتح زر `View Certificate` ملف PDF في تبويب جديد. لا تضف تاريخًا أو معرفًا أو رابط تحقق إلا إذا كان موثقًا في الشهادة.
 
 ---
 
@@ -469,7 +376,7 @@ npm run lint
 
 لإضافة شهادة:
 
-1. أضف صورتها إلى `public/images/certificates/`.
+1. أضف ملف PDF إلى `public/certificates/`.
 2. أضف object جديدًا داخل `certificates`.
 3. رتّبها حسب الأولوية.
 4. شغّل `npm run build`.

@@ -10,6 +10,8 @@ import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { CommandPalette } from "@/components/CommandPalette";
+import { CVPage } from "@/components/CVPage";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function useEasterEggs() {
   useEffect(() => {
@@ -33,9 +35,7 @@ function useEasterEggs() {
   }, []);
 }
 
-export default function App() {
-  useEasterEggs();
-
+function HomePage() {
   return (
     <>
       <a
@@ -58,5 +58,17 @@ export default function App() {
       <Footer />
       <CommandPalette />
     </>
+  );
+}
+
+export default function App() {
+  useEasterEggs();
+
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/cv" element={<CVPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }

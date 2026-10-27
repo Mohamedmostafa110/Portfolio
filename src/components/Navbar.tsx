@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Moon, Search, Sun, X } from "lucide-react";
+import { FileText, Menu, Moon, Search, Sun, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { navItems } from "@/data/portfolio";
 import { site } from "@/config/site";
 import { useTheme } from "@/hooks/useTheme";
@@ -93,6 +94,14 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <Link
+            to="/cv"
+            aria-label="View CV"
+            title="View CV"
+            className="grid size-10 place-items-center rounded-md border border-line text-fg transition-colors hover:border-accent hover:text-accent"
+          >
+            <FileText size={18} aria-hidden />
+          </Link>
           <button
             type="button"
             onClick={() => window.dispatchEvent(new Event("open-command-palette"))}

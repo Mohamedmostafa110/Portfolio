@@ -267,7 +267,7 @@ export function Projects() {
                 <ProjectImage
                   src={featured.image}
                   title={featured.title}
-                  className="h-full min-h-[260px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="h-full min-h-[260px] w-full bg-raised object-contain"
                 />
               </div>
               <div className="flex flex-col justify-center p-7 sm:p-10">

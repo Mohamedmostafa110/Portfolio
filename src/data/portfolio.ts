@@ -88,7 +88,7 @@ export interface Project {
   title: string;
   tagline: string;
   year: number;
-  category: "Web App" | "Platform" | "Desktop" | "Embedded";
+  category: "Web App" | "Platform" | "Desktop" | "Embedded" | "E-Commerce";
   description: string;
   /** Screenshot path under /public, e.g. "/images/projects/fitpro-1.png".
       If the file is missing, a branded placeholder is rendered instead. */
@@ -109,7 +109,6 @@ export const projects: Project[] = [
     tagline: "Train. Track. Transform.",
     year: 2026,
     category: "Web App",
-    featured: true,
     description:
       "A React-based fitness platform for planning training, tracking progress, and staying consistent — built as my ITI React graduation project.",
     image: "/images/projects/project-1.png",
@@ -138,6 +137,49 @@ export const projects: Project[] = [
       outcome: "Delivered as the graduation project of the ITI React program.",
       lessons:
         "Placeholder — what would you do differently at scale (backend persistence, auth, offline)?",
+    },
+  },
+  {
+    id: "exclusive-ecommerce",
+    title: "Exclusive — E-Commerce Website",
+    tagline: "Frontend development · multilingual storefront",
+    year: 2026,
+    category: "E-Commerce",
+    featured: true,
+    description:
+      "A modern, fully responsive storefront built as my ElMadrasah Web Development Diploma graduation project. It brings product discovery, a persistent cart and wishlist, and validated checkout together through reusable React components and context-based state. Firebase Authentication is configurable with a local fallback, while i18next supports English, Arabic with full RTL, and French. Payments are demo-only; no real transactions are processed.",
+    image: "/images/projects/E-commerce-project.png",
+    technologies: [
+      "React 18",
+      "JavaScript",
+      "Tailwind CSS 4",
+      "Vite 6",
+      "React Router 6",
+      "Firebase Authentication",
+      "i18next",
+      "react-i18next",
+      "React Context",
+      "localStorage",
+      "Lucide React",
+    ],
+    liveDemo: "https://e-commerce-website-almdrasa.vercel.app/",
+    github: "https://github.com/Mohamedmostafa110/-E-Commerce-Website-Almdrasa",
+    caseStudy: {
+      problem:
+        "Create a responsive, multilingual shopping experience with connected product discovery, account, cart, wishlist, and checkout flows.",
+      role: "Built as my ElMadrasah Web Development Diploma graduation project.",
+      architecture: [
+        "React 18 storefront with reusable components and React Router 6",
+        "React Context for shared shopping state, with localStorage persistence",
+        "Configurable Firebase Authentication with a local fallback",
+        "i18next and react-i18next for English, Arabic RTL, and French",
+      ],
+      decisions: [
+        "Keep cart and wishlist state available across the shopping experience and between visits",
+        "Support responsive layouts and accessible controls, keyboard focus, and reduced motion",
+        "Clearly present card payment as a demo flow; no real transactions are processed",
+      ],
+      outcome: "Completed as the ElMadrasah Web Development Diploma graduation project.",
     },
   },
   {
@@ -276,35 +318,76 @@ export const journey: JourneyEntry[] = [
 /* ------------------------------ Certificates ------------------------------ */
 
 export interface Certificate {
+  id: string;
   title: string;
   issuer: string;
-  year: string;
-  image?: string; // /images/certificates/xxx.png — a branded placeholder renders if missing
-  kind?: "Certification" | "Achievement" | "Milestone";
-  description?: string;
-  experience?: string;
-  achievements?: string[];
-  learnings?: string[];
-  skills?: string[];
+  description: string;
+  category: "Frontend Development" | "Web Development" | "Language Learning";
+  pdfUrl: string;
+  featured?: boolean;
 }
 
-/**
- * No certificates have been added yet. Add real ones as simple objects:
- *
- * {
- *   title: "React Development",
- *   issuer: "ITI",
- *   year: "2026",
- *   image: "/images/certificates/react-iti.png",
- *   kind: "Certification",
- *   description: "What this certification or milestone was about.",
- *   experience: "What I worked on and how the experience went.",
- *   achievements: ["What I completed or achieved."],
- *   learnings: ["What I learned."],
- *   skills: ["React", "JavaScript"],
- * },
- */
-export const certificates: Certificate[] = [];
+export const certificates: Certificate[] = [
+  {
+    id: "iti-react-training",
+    title: "React Training Certificate",
+    issuer: "Information Technology Institute (ITI)",
+    description: "Documents React training through the Information Technology Institute.",
+    category: "Frontend Development",
+    pdfUrl: "/certificates/iti-react-training-certificate.pdf",
+  },
+  {
+    id: "almdrasa-programming-fundamentals",
+    title: "Programming Fundamentals",
+    issuer: "Almdrasa",
+    description: "Covers foundational programming concepts and structured problem-solving.",
+    category: "Web Development",
+    pdfUrl: "/certificates/almdrasa-programming-fundamentals-certificate.pdf",
+  },
+  {
+    id: "almdrasa-html-css",
+    title: "HTML & CSS",
+    issuer: "Almdrasa",
+    description:
+      "Covers the foundations of structuring web pages with HTML and styling them with CSS.",
+    category: "Frontend Development",
+    pdfUrl: "/certificates/almdrasa-html-css-certificate.pdf",
+  },
+  {
+    id: "almdrasa-javascript",
+    title: "JavaScript Fundamentals",
+    issuer: "Almdrasa",
+    description: "Documents learning in JavaScript fundamentals and browser-based interactivity.",
+    category: "Frontend Development",
+    pdfUrl: "/certificates/almdrasa-javascript-certificate.pdf",
+  },
+  {
+    id: "almdrasa-react",
+    title: "React Development",
+    issuer: "Almdrasa",
+    description: "Covers building component-based interfaces with React.",
+    category: "Frontend Development",
+    pdfUrl: "/certificates/almdrasa-react-certificate.pdf",
+  },
+  {
+    id: "almdrasa-web-development-diploma",
+    title: "Web Development Diploma",
+    issuer: "Almdrasa",
+    description:
+      "Final diploma certificate recognizing completion of Almdrasa's web development diploma.",
+    category: "Web Development",
+    pdfUrl: "/certificates/almdrasa-web-development-diploma-certificate.pdf",
+    featured: true,
+  },
+  {
+    id: "berlitz-english-a2-3",
+    title: "English A2.3 Completion Certificate",
+    issuer: "Berlitz",
+    description: "Documents completion of English language studies at level A2.3.",
+    category: "Language Learning",
+    pdfUrl: "/certificates/berlitz-english-a2-3-completion-certificate.pdf",
+  },
+];
 
 /* ---------------------------------- Skills -------------------------------- */
 

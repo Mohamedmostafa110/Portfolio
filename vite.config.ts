@@ -8,6 +8,11 @@ export default defineConfig({
   resolve: {
     alias: { "@": path.resolve(__dirname, "src") },
   },
+  server: {
+    watch: {
+      ignored: ["**/Mohamed-Mostafa_CV.docx", "**/public/**/*.pdf"],
+    },
+  },
   build: {
     target: "es2020",
     rollupOptions: {

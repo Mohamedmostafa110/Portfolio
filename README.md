@@ -53,8 +53,10 @@ Tailwind utilities in `tailwind.config.js`. Change the palette in **one** place.
 The UI renders dynamically — adding content never requires touching a component.
 
 ### Add a new project
+
 1. Drop 1–2 screenshots into `public/images/projects/` (e.g. `myapp-1.png`).
 2. In `portfolio.ts`, add one object to `projects`:
+
 ```ts
 {
   id: "my-app",                    // unique, url-safe
@@ -77,22 +79,34 @@ The UI renders dynamically — adding content never requires touching a componen
   },
 }
 ```
+
 Set `featured: true` to promote it; `id`, `title`, `tagline`, `year`, `category`,
 `description`, `technologies`, `caseStudy` are required by the type system.
 
 ### Add a new certificate
-1. Put the scan in `public/images/certificates/`.
+
+1. Put the PDF in `public/certificates/`.
 2. Add one object to `certificates`:
+
 ```ts
-{ title: "React Development", issuer: "ITI", year: "2026",
-  image: "/images/certificates/react-iti.png", url: "https://…" /* optional */ }
+{
+  id: "iti-react-training",
+  title: "React Training Certificate",
+  issuer: "Information Technology Institute (ITI)",
+  description: "Documents React training through ITI.",
+  category: "Frontend Development",
+  pdfUrl: "/certificates/iti-react-training-certificate.pdf",
+}
 ```
 
 ### Add journey / experience
+
 Add one object to `journey`:
+
 ```ts
 { period: "2026", title: "…", organization: "…", description: "…", tags: ["…"] }
 ```
+
 Add skills by appending strings inside the right group in `skillGroups`.
 Navigation items live in `navItems`; social links in `socials`.
 
@@ -121,6 +135,7 @@ The form posts via FormSubmit's **AJAX endpoint** (`https://formsubmit.co/ajax/<
 visitor stays on the site with inline success/error feedback — no ugly redirect.
 
 **To activate:**
+
 1. Set your receiving address once, either in `src/config/site.ts` (`email`) or via
    `VITE_CONTACT_EMAIL` in `.env` (see `.env.example`).
 2. Deploy, submit the form once. FormSubmit emails you a **one-time activation link** —
@@ -130,6 +145,7 @@ visitor stays on the site with inline success/error feedback — no ugly redirec
 sending, `aria-live` success/error messages, keyboard accessible.
 
 **Honest limitations of FormSubmit (free tier):**
+
 - Requires that one-time activation per address.
 - Free submissions per month are capped (~250); the AJAX endpoint can be rate-limited under
   abuse — always keep the direct `mailto:` fallback visible (it is, next to the form).
@@ -139,10 +155,10 @@ sending, `aria-live` success/error messages, keyboard accessible.
 
 ## 6. Environment variables
 
-| Variable             | Purpose                                             |
-|----------------------|-----------------------------------------------------|
-| `VITE_CONTACT_EMAIL` | Overrides the contact-form receiving email          |
-| `VITE_ANALYTICS_URL` | Optional self-hosted analytics ingest (else no-op)  |
+| Variable             | Purpose                                            |
+| -------------------- | -------------------------------------------------- |
+| `VITE_CONTACT_EMAIL` | Overrides the contact-form receiving email         |
+| `VITE_ANALYTICS_URL` | Optional self-hosted analytics ingest (else no-op) |
 
 ## 7. Deployment (Vercel example)
 
@@ -166,8 +182,8 @@ sending, `aria-live` success/error messages, keyboard accessible.
 ## 9. Things that need YOUR real assets (nothing was invented)
 
 1. Real project screenshots → `public/images/projects/`
-2. Real certificate scans → `public/images/certificates/`
+2. Real certificate PDFs → `public/certificates/`
 3. Real GitHub / LinkedIn / Live Demo URLs (`#` placeholders currently hidden)
 4. Receiving email in `src/config/site.ts` (+ FormSubmit activation)
 5. Real domain in `index.html` + `robots.txt` + an `og-image.png`
-6. Case-study fields marked *placeholder* in `portfolio.ts` (thinking, challenges, lessons)
+6. Case-study fields marked _placeholder_ in `portfolio.ts` (thinking, challenges, lessons)
