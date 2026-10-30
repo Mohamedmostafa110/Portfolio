@@ -75,7 +75,7 @@ export function Navbar() {
         className="mx-auto flex h-16 max-w-shell items-center justify-between gap-6 px-5 sm:px-8"
         aria-label="Primary"
       >
-        <a href="#home" className="font-display text-lg font-semibold tracking-tight">
+        <a href="#top" className="font-display text-lg font-semibold tracking-tight">
           {site.name}
         </a>
 
@@ -134,7 +134,7 @@ export function Navbar() {
             className="border-b border-line bg-base md:hidden"
           >
             <ul className="space-y-1 px-5 py-4">
-              {[{ label: "Home", href: "#home" }, ...navItems].map((item) => (
+              {[{ label: "Home", href: "#top" }, ...navItems].map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}

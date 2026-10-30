@@ -4,9 +4,9 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { Projects } from "@/components/Projects";
+import { Skills } from "@/components/Skills";
 import { Journey } from "@/components/Journey";
 import { Certificates } from "@/components/Certificates";
-import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { CommandPalette } from "@/components/CommandPalette";
@@ -50,9 +50,9 @@ function HomePage() {
         <About />
         <Services />
         <Projects />
+        <Skills />
         <Journey />
         <Certificates />
-        <Skills />
         <Contact />
       </main>
       <Footer />

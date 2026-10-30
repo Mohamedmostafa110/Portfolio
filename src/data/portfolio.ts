@@ -15,6 +15,8 @@
  * ---------------------------------------------------------------------------
  */
 
+import { site } from "@/config/site";
+
 export interface NavItem {
   label: string;
   href: string;
@@ -24,8 +26,8 @@ export const navItems: NavItem[] = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
-  { label: "Journey", href: "#journey" },
   { label: "Skills", href: "#skills" },
+  { label: "Journey", href: "#journey" },
   { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
 ];
@@ -439,7 +441,7 @@ export interface SocialLink {
 }
 
 export const socials: SocialLink[] = [
-  { label: "GitHub", url: "https://github.com/mohamed-mostafa", icon: "github" },
-  { label: "LinkedIn", url: "https://www.linkedin.com/in/mohamed-mostafa", icon: "linkedin" },
-  { label: "Email", url: "mailto:hello@mohamedmostafa.dev", icon: "mail" },
+  { label: "GitHub", url: site.github, icon: "github" },
+  { label: "LinkedIn", url: site.linkedin, icon: "linkedin" },
+  { label: "Email", url: `mailto:${site.email}`, icon: "mail" },
 ];
